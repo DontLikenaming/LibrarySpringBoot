@@ -27,7 +27,7 @@ public class LibraryController {
         mv.setViewName("/list");
         mv.addObject("lblist", libsrv.readBoard(page));
         mv.addObject("page", page);
-        mv.addObject("stpg", (page-1)/25*25+1);
+        mv.addObject("stpg", ((page-1)/25)*25+1);
         mv.addObject("cntpg", cntpg);
 
         return mv;

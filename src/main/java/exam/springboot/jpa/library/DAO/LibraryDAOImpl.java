@@ -23,7 +23,7 @@ public class LibraryDAOImpl implements LibraryDAO{
 
     @Override
     public int countBoard() {
-        int allcnt = libraryRepository.countLibraryBy();
+        Long allcnt = libraryRepository.countLibraryBy();
         return (int) Math.ceil((double)allcnt/25);
     }
 }

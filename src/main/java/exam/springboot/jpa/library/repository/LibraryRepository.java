@@ -5,5 +5,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface LibraryRepository extends PagingAndSortingRepository<Library, Long> {
 
-    int countLibraryBy();
+    Long countLibraryBy();
 }

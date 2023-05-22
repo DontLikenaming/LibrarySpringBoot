@@ -17,12 +17,12 @@
             <table class="table table-striped tbborder">
                 <thead class="thbg">
                 <tr>
-                    <th style="width: 7%">도서관번호</th>
+                    <th style="width: 10%">도서관번호</th>
                     <th>도서관명</th>
-                    <th style="width: 15%">시도</th>
-                    <th style="width: 13%">구군</th>
-                    <th style="width: 20%">운영종료일</th>
-                    <th style="width: 7%">연락처</th>
+                    <th style="width: 10%">시도</th>
+                    <th style="width: 10%">구군</th>
+                    <th style="width: 25%">운영종료일</th>
+                    <th style="width: 10%">연락처</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@
         <div class="offset-2 col-8">
             <nav>
                 <ul class="pagination justify-content-center"
-                    th:with="pglink = ${'?page='}">
+                    th:with="pglink = ${'/list?page='}">
                     <th:block th:if="${stpg != 1}">
                         <li class="page-item"><a class="page-link" th:href="|${pglink}1|">처음</a></li>
                         <li class="page-item"><a class="page-link" th:href="|${pglink}${page - 25}|">이전 25개</a></li>
@@ -50,7 +50,6 @@
                     <th:block th:if="${stpg == 1}">
                         <th:block th:if="${page != 1}">
                             <li class="page-item"><a class="page-link" th:href="|${pglink}1|">처음</a></li>
-                            <li class="page-item disabled"><a class="page-link">이전 25개</a></li>
                         </th:block>
                     </th:block>
                     <th:block th:each="i : ${#numbers.sequence(stpg, stpg+24)}">
@@ -66,7 +65,6 @@
                     </th:block>
                     <th:block th:if="|${(stpg - (stpg%25)) eq (cntpg - (cntpg%25))}|">
                         <th:block th:if="|${page != cntpg}|">
-                            <li class="page-item disabled"><a class="page-link">다음 25개</a></li>
                             <li class="page-item"><a class="page-link" th:href="|${pglink}${cntpg}|">끝</a></li>
                         </th:block>
                     </th:block>
