@@ -8,8 +8,13 @@
 </head>
 <body>
 <th:block>
+    <th:block th:if="${page gt cntpg}">
+        <script th:inline="javascript">
+            location.href="/?page="+[[${cntpg}]];
+        </script>
+    </th:block>
     <div class="mt-4">
-        <h4><i class="fa-solid fa-book-open-reader fa-2xl">도서관 조회</i></h4>
+        <h4><i class="fa-solid fa-book-open-reader fa-2xl"> 도서관 조회</i></h4>
         <hr>
     </div>
     <div class="row">
