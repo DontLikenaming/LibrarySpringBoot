@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping(value = "/")
 public class LibraryController {
@@ -19,13 +21,14 @@ public class LibraryController {
 
     @GetMapping(value = "/list")
     public ModelAndView list2(Integer page){
-        int cntpg = libsrv.countBoard();
         if((page==null)||(page<=0)){page = 1;}
-        else if((page>cntpg)){page = cntpg;}
+        Map<String, Object> libs = libsrv.readBoard(page);
+
+        int cntpg = (int) libs.get("cntpg");
 
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/list");
-        mv.addObject("lblist", libsrv.readBoard(page));
+        mv.addObject("lblist", libs.get("lblist"));
         mv.addObject("page", page);
         mv.addObject("stpg", ((page-1)/25)*25+1);
         mv.addObject("cntpg", cntpg);
